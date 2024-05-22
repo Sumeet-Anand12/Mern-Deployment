@@ -8,9 +8,10 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
 import path from 'path';
+import {fileURLToPath} from 'url';
 
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin:'*', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
@@ -20,6 +21,10 @@ dotenv.config();
 
 //databse config
 connectDB();
+// fix dirName
+
+const __filename= fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //rest object
 const app = express();
